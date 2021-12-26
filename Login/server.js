@@ -9,29 +9,9 @@ const passport = require("passport");
 const flash = require("express-flash");
 const session = require("express-session");
 require("./DB/connection");
-const users = require("./model/schema");
-
-function loggedIn(req, res, next) {
-  if (req.user) {
-    next();
-  } else {
-    res.redirect("/login");
-  }
-}
-
-const getUserByEmail = async (email) => {
-  try {
-    const user = await users
-      .findOne({ email: email }, async (err, user) => {
-        if (err) console.log("Error: " + err);
-        else return user;
-      })
-      .clone();
-    return user;
-  } catch (e) {
-    console.log("Login error " + e.message);
-  }
-};
+const users = require("./DB/model/schema");
+const loggedIn = require("./middlewares/loggedIn");
+const getUserByEmail = require("./utils/getUserByEmail");
 
 const initialize = require("./passportCon");
 initialize(passport, (email) => getUserByEmail(email));
