@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const connection = require('./model/connection.js');
+const connection = require('./DB/connection.js');
 
 const Users = mongoose.schema({
     name :{ 

@@ -8,9 +8,10 @@ const app = express()
 const passport = require('passport') 
 const flash = require( 'express-flash' )
 const session = require('express-session')
-const users = require('./model/schema.js')
+require('./DB/connection')
 
-console.log(typeof users);
+
+
 
 const initialize = require('./passportCon')
 initialize(passport ,
@@ -23,6 +24,7 @@ initialize(passport ,
 
 
 app.set('view-engine' , 'ejs')
+app.use(express.json())
 app.use( express.urlencoded({ extended : false }))
 app.use(flash())
 app.use(session({
