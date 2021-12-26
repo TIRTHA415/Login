@@ -69,7 +69,6 @@ app.post("/register", async (req, res) => {
 });
 
 app.post("/logout", function (req, res) {
-  console.log("Logging out");
   req.logout();
   req.session.destroy();
   res.redirect("/");
