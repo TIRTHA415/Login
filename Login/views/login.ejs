@@ -1,11 +1,16 @@
-<h1>Welcome to node.js app</h1>
-<h1>Login</h1>
+<link rel="stylesheet" href="../css/login.css">
+
+<h1 style="  margin-left:400px ; padding-left: 50px; margin-right: 300px; font-family:cursive; background-color: lime; padding-bottom: 10px; font-size: 60px ;">Welcome to node.js app</h1>
+
+<div style=" font-family: cursive; background-color:lightskyblue; margin-left: 400px ; padding-left: 20px; margin-right: 300px; font-size: 50px; border: solid;">
+<h1 style=" text-align: center; font-size: 100px;" class="heading">Login</h1>
 <% if(messages.error){ %>
     <%= messages.error %>
         <% } %>
 
 
 
+<<<<<<< HEAD
             <form action="/login" method="POST">
 
                 <div>
@@ -19,3 +24,19 @@
                 <button type="submit">Login</button>
             </form>
             <a href="/register">Register</a>
+=======
+<form action="/login" method="POST">
+  
+ <div style="text-align: center;">
+    <label style=" font-weight: 200;" for="email">Email</label>
+    <input style="font-size: 30px;" type="email" id="email" name="email" required>
+</div>   
+<div style="text-align: center;">
+    <label style="" for="password">Password</label>
+    <input style="font-size: 30px;" type="password" id="password" name="password" required>
+</div style="text-align: center;">   
+   <button style=" font-family: cursive; background-color: rgb(0, 255, 42); font-size: 50px; width: 50%; margin-left: 200px; margin-top: 15px;" type= "submit">Login</button>
+</form>
+<a style="text-decoration: none; font-family :cursive; background-color: yellow; border: solid; color: black;" href="/register">Register</a>
+</div>
+>>>>>>> 742d0c2fa6676300c6082977fb71e96bb66cff20
