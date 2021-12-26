@@ -18,7 +18,7 @@ const getUserByEmail = async (email)=>{
         else
         return user;
     });} catch(e){
-        console.log("Login error "+ e)
+        console.log("Login error "+ e.message);
     }
 }
 
