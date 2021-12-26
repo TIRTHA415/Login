@@ -53,19 +53,30 @@ app.get("/register", (req, res) => {
 
 app.post("/register", async (req, res) => {
   try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
-    users.create(
-      { name: req.body.name, email: req.body.email, password: hashedPassword },
-      (err, newUser) => {
-        console.log(newUser);
-      }
-    );
-
+    const user = await users.findOne({ email: req.body.email });
+    if (user) console.log("Email already exists");
+    else {
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+      users.create(
+        {
+          name: req.body.name,
+          email: req.body.email,
+          password: hashedPassword,
+        },
+        (err, newUser) => {
+          console.log(newUser);
+        }
+      );
+    }
     res.redirect("/login");
   } catch {
     res.redirect("/register");
   }
-  console.log(users);
+});
+
+app.get("/gauth/register", (req, res) => {
+  console.log("Register");
+  res.render("gauth.ejs");
 });
 
 app.post("/logout", function (req, res) {
