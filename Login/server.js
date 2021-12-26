@@ -23,7 +23,6 @@ const getUserByEmail = async (email) => {
   try {
     const user = await users
       .findOne({ email: email }, async (err, user) => {
-        console.log("server: " + email);
         if (err) console.log("Error: " + err);
         else return user;
       })
@@ -52,8 +51,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get("/", loggedIn, (req, res) => {
-  console.log("home");
-  res.render("index.ejs");
+  res.render("index.ejs", { name: req.user.name });
 });
 
 app.get("/login", (req, res) => {
@@ -76,11 +74,6 @@ app.get("/register", (req, res) => {
 app.post("/register", async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
-
-    // users.name = req.body.name;
-    // users.email = req.body.email;
-    // users.password = hashedPassword;
-
     users.create(
       { name: req.body.name, email: req.body.email, password: hashedPassword },
       (err, newUser) => {
