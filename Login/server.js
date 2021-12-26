@@ -9,16 +9,20 @@ const passport = require('passport')
 const flash = require( 'express-flash' )
 const session = require('express-session')
 require('./DB/connection')
-const users = require('users')
+const users = require('./model/schema')
 
-console.log(user)
+const getUserByEmail = async (email)=>{
+    await users.findOne({email: email},(err,user)=>{
+        if(err) console.log("Error: " + err);
+        else
+        return user;
+    });
+}
+
+console.log(users)
 
 const initialize = require('./passportCon')
-initialize(passport ,
-     email => users.find(user => user.email === email ) ,
-        id => users.find(user => user.id === id )
-
-         )
+initialize(passport ,email => getUserByEmail(email))
 
 
 
@@ -58,9 +62,11 @@ app.post('/register' , async (req , res)=> {
     try{
         const hashedPassword = await bcrypt.hash(req.body.password , 10)
 
-            users.name = req.body.name;
-            users.email = req.body.email;
-            users.password = hashedPassword;
+            // users.name = req.body.name;
+            // users.email = req.body.email;
+            // users.password = hashedPassword;
+
+            users.create({name: req.body.name, email: req.body.email, password: hashedPassword},(err,newUser)=>{console.log(newUser);});
 
         res.redirect('/login')
     }
