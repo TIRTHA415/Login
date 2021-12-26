@@ -12,14 +12,18 @@ require('./DB/connection')
 const users = require('./model/schema')
 
 const getUserByEmail = async (email)=>{
-    try{
-    await users.findOne({email: email},(err,user)=>{
-        if(err) console.log("Error: " + err);
-        else
+    // try{
+        
+    const user = await users.findOne({email: email}, async (err,user)=>{
+        console.log("server: " + email);
+        // if(err) console.log("Error: " + err);
+        // else
         return user;
-    });} catch(e){
-        console.log("Login error "+ e.message);
-    }
+        // console.log("user = "+ typeof user);
+    }).clone()//} catch(e){
+        // console.log("Login error "+ e.message);
+    // }
+    return user;
 }
 
 console.log(users)

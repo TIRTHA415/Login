@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt')
     const  authenticateUser= async (email , password , done) => {
         console.log(email + password)
         const user = await getUserByEmail(email)
-        console.log("User "+user);
+        console.log("(PassportCon)User "+user);
         if(user==null){
         return done( null , false , { message : 'No user with That email'})
         }
