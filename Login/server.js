@@ -9,9 +9,9 @@ const passport = require('passport')
 const flash = require( 'express-flash' )
 const session = require('express-session')
 require('./DB/connection')
+const users = require('users')
 
-
-
+console.log(user)
 
 const initialize = require('./passportCon')
 initialize(passport ,
