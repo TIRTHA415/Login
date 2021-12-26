@@ -13,7 +13,7 @@ const users = require("./DB/model/schema");
 const loggedIn = require("./middlewares/loggedIn");
 const getUserByEmail = require("./utils/getUserByEmail");
 
-const initializeLocal = require("./passportCon");
+const initializeLocal = require("./Auths/passportCon");
 initializeLocal(passport, (email) => getUserByEmail(email));
 
 app.set("view-engine", "ejs");
@@ -66,6 +66,13 @@ app.post("/register", async (req, res) => {
     res.redirect("/register");
   }
   console.log(users);
+});
+
+app.post("/logout", function (req, res) {
+  console.log("Logging out");
+  req.logout();
+  req.session.destroy();
+  res.redirect("/");
 });
 
 app.listen(3000);
