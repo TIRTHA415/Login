@@ -13,8 +13,8 @@ const users = require("./DB/model/schema");
 const loggedIn = require("./middlewares/loggedIn");
 const getUserByEmail = require("./utils/getUserByEmail");
 
-const initialize = require("./passportCon");
-initialize(passport, (email) => getUserByEmail(email));
+const initializeLocal = require("./passportCon");
+initializeLocal(passport, (email) => getUserByEmail(email));
 
 app.set("view-engine", "ejs");
 app.use(express.json());
