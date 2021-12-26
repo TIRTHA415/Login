@@ -1,6 +1,6 @@
 if( process.env.Node_ENV !== 'production'){
     require('dotenv').config()
-}
+}//for loading env variables in process.env
 
 const express = require('express')
 const bcrypt = require('bcrypt') 
@@ -12,11 +12,14 @@ require('./DB/connection')
 const users = require('./model/schema')
 
 const getUserByEmail = async (email)=>{
+    try{
     await users.findOne({email: email},(err,user)=>{
         if(err) console.log("Error: " + err);
         else
         return user;
-    });
+    });} catch{
+        console.log("Login error !")
+    }
 }
 
 console.log(users)
@@ -44,7 +47,7 @@ app.get('/',(req , res )=> {
 })
 
 app.get('/login',(req , res )=> {
-    res.render('login.ejs' , { name: 'Tirtha'})
+    res.render('login.ejs' , )
 })
 
 app.post('/login' ,  passport.authenticate('local' , {
@@ -54,7 +57,7 @@ app.post('/login' ,  passport.authenticate('local' , {
 }))
 
 app.get('/register',(req , res )=> {
-    res.render('register.ejs' , { name: 'Tirtha'})
+    res.render('register.ejs' ,)
     
 })
 
