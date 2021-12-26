@@ -8,10 +8,9 @@ const app = express()
 const passport = require('passport') 
 const flash = require( 'express-flash' )
 const session = require('express-session')
-const mongoose = require('mongoose');
-const users = require('./model/connection.js')
+const users = require('./model/schema.js')
 
-console.log(users.name);
+console.log(typeof users);
 
 const initialize = require('./passportCon')
 initialize(passport ,
@@ -68,5 +67,5 @@ app.post('/register' , async (req , res)=> {
     }
   console.log(users)
 })
-console.log("Print: "+users.name);
+
 app.listen(3000)
