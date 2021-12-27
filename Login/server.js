@@ -89,7 +89,7 @@ app.get("/auth/google/failure", function (req, res) {
   res.send("Failed");
 });
 
-app.post("/logout", function (req, res) {
+app.get("/logout", function (req, res) {
   req.logout();
   req.session.destroy();
   res.redirect("/");
