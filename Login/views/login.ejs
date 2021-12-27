@@ -1,26 +1,32 @@
-<link rel="stylesheet" href="../css/login.css">
+<h1
+    style=" border: solid; margin-left:400px ; padding-left: 50px; margin-right: 300px; font-family:cursive; background-color: yellow; padding-bottom: 10px; font-size: 60px ;">
+    Welcome to node.js app</h1>
 
-<h1 style=" border: solid; margin-left:400px ; padding-left: 50px; margin-right: 300px; font-family:cursive; background-color: yellow; padding-bottom: 10px; font-size: 60px ;">Welcome to node.js app</h1>
-
-<div style=" font-family: cursive; background-color:greenyellow; margin-left: 400px ; padding-left: 20px; margin-right: 300px; font-size: 50px; border: solid;">
-<h1 style=" text-align: center; font-size: 100px;" class="heading">Login</h1>
-<% if(messages.error){ %>
-    <%= messages.error %>
-        <% } %>
-
+<div>
+    style=" font-family: cursive; background-color:greenyellow; margin-left: 400px ; padding-left: 20px; margin-right: 300px; font-size: 50px; border: solid;">
+    <h1 style=" text-align: center; font-size: 100px;" class="heading">Login</h1>
+    <% if(messages.error){ %>
+        <%= messages.error %>
+            <% } %
 
 
-            <form action="/login" method="POST">
 
-                <div style="margin-left: 200px; font-size: 50px;  " >
-                    <label for="email">Email</label>
-                    <input style="padding-top: 10px; font-size: 20px; padding-right: 40px;" type="email" id="email" name="email" required>
-                </div>
-                <div style="margin-left: 110px; ">
-                    <label  for="password">Password</label>
-                    <input style=" padding-left: 40px; padding-top: 10px; font-size: 20px;" type="password" id="password" name="password" required>
-                </div>
-                <button style="margin-top: 10px; margin-left: 140px;background-color: yellow; width: 70%; font-size: 40px; text-align: center; font-family: cursive;" type="submit">Login</button>
-            </form>
-            <a  style="text-decoration: none; color: black; background-color: yellow; border: solid;" href="/register">Register</a>
+                <form action="/login" method="POST">
+
+                    <div style="margin-left: 200px; font-size: 50px;  ">
+                        <label for="email">Email</label>
+                        <input style="padding-top: 10px; font-size: 20px; padding-right: 40px;" type="email" id="email"
+                            name="email" required>
+                    </div>
+                    <div style="margin-left: 110px; ">
+                        <label for="password">Password</label>
+                        <input style=" padding-left: 40px; padding-top: 10px; font-size: 20px;" type="password"
+                            id="password" name="password" required>
+                    </div>
+                    <button
+                        style="margin-top: 10px; margin-left: 140px;background-color: yellow; width: 70%; font-size: 40px; text-align: center; font-family: cursive;"
+                        type="submit">Login</button>
+                </form>
+                <a style="text-decoration: none; color: black; background-color: yellow; border: solid;"
+                    href="/register">Register</a>
 </div>
