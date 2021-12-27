@@ -43,7 +43,7 @@ body {
   margin: auto;
   margin-bottom: 0.3em;
 }
-#login {
+#submitBtn {
   margin: auto;
   margin-top: 0;
 }
@@ -67,12 +67,14 @@ a {
   text-decoration: none;
 }
 a:hover {
+  text-align: center;
   color: darkblue;
   font-size: 105%;
   opacity: 0.7;
   transition: 0.3s;
 }
 
+input[type="text"],
 input[type="email"],
 input[type="password"] {
   background-color: rgb(252, 255, 233);
@@ -84,15 +86,10 @@ input[type="password"] {
   border-style: solid;
 }
 ::placeholder {
-  /* opacity: 0.4; */
   font-weight: 100;
 }
 
 @media screen and (max-width: 768px) {
-  /* div {
-    width: 100%;
-  } */
-
   .container-1 {
     width: 70%;
   }
@@ -104,6 +101,7 @@ input[type="password"] {
     font-size: 1em;
   }
 
+  input[type="text"],
   input[type="email"],
   input[type="password"] {
     width: 80%;
