@@ -12,8 +12,10 @@ require("./DB/connection");
 const users = require("./DB/model/schema");
 const loggedIn = require("./middlewares/loggedIn");
 const getUserByEmail = require("./utils/getUserByEmail");
-
 const initializeLocal = require("./Auths/passportCon");
+require("./Auths/passportGauth");
+const userExists = require("./utils/checkEmail");
+
 initializeLocal(passport, (email) => getUserByEmail(email));
 
 app.use(express.static(__dirname + "/public"));
@@ -54,8 +56,7 @@ app.get("/register", (req, res) => {
 
 app.post("/register", async (req, res) => {
   try {
-    const user = await users.findOne({ email: req.body.email });
-    if (user) console.log("Email already exists");
+    if (await userExists(req.body.email)) console.log("Email already exists");
     else {
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
       users.create(
@@ -75,9 +76,17 @@ app.post("/register", async (req, res) => {
   }
 });
 
-app.get("/gauth/register", (req, res) => {
-  console.log("Register");
-  res.render("gauth.ejs");
+app.get("/auth/google", passport.authenticate("google", { scope: ["email", "profile"] }));
+
+app.get("/auth/google/callback",
+  passport.authenticate("google", {
+    successRedirect: "/",
+    failureRedirect: "/auth/google/failure",
+  })
+);
+
+app.get("/auth/google/failure", function (req, res) {
+  res.send("Failed");
 });
 
 app.post("/logout", function (req, res) {

@@ -4,16 +4,19 @@ require("../connection.js");
 const Users = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
+    required: true
   },
   email: {
     type: String,
-    required: true,
+    required: true
   },
   password: {
-    type: String,
-    required: true,
+    type: String
   },
+  google_id: {
+    type: String,
+    default: null
+  }
 });
 
 module.exports = mongoose.model("users", Users);
