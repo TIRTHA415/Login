@@ -1,41 +1,35 @@
-<link rel="stylesheet" href="../css/login.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/style.css" type="text/css"></link>
+</head>
+<body>
+    
 
-<h1
-    style=" border: solid; margin-left:400px ; padding-left: 50px; margin-right: 300px; font-family:cursive; background-color: yellow; padding-bottom: 10px; font-size: 60px ;">
-    Welcome to node.js app</h1>
+<h1 class="page-header">Welcome to authentication app</h1>
 
-<div
-    style=" font-family: cursive; background-color:rgb(47, 255, 193); margin-left: 400px ; padding-left: 20px; margin-right: 300px; font-size: 50px; border: solid;">
-    <h1 style=" margin-top: 5px; text-align: center; font-size: 100px;" class="heading">Login</h1>
+<div class = "container-1">
+    <h1 class="heading">Login</h1>
     <% if(messages.error){ %>
         <%= messages.error %>
             <% } %>
+                <form action="/login" method="POST" class="form-container">
 
-
-
-                <form action="/login" method="POST">
-
-                    <div style="margin-left: 200px; font-size: 50px;  ">
-                        <label for="email">Email</label>
-                        <input style="padding-top: 10px; font-size: 20px; padding-right: 40px;" type="email" id="email"
-                            name="email" required>
+                    <div class="input-container">
+                        <input type="email" id="email" name="email" required placeholder="Enter email"><br>
+                        <input type="password" id="password" name="password" required placeholder="Enter password">
                     </div>
-                    <div style="margin-left: 110px; ">
-                        <label for="password">Password</label>
-                        <input style=" padding-left: 40px; padding-top: 10px; font-size: 20px;" type="password"
-                            id="password" name="password" required>
-                    </div>
-                    <button
-                        style="margin-top: 10px; margin-left: 140px;background-color: yellow; width: 70%; font-size: 40px; text-align: center; font-family: cursive;"
-                        type="submit">Login</button>
-                    <button
-                        style="margin-top: 10px; margin-left: 140px;background-color: yellow; width: 70%; font-size: 40px; text-align: center; font-family: cursive;"
-                        type="submit">Google</button>
+                    <button id="login" type="submit">Login</button>
                 </form>
-                <button><a href="/auth/google">Google</button>
-                <a style="text-decoration: none; color: black; background-color: yellow; border: solid;"
-                    href="/register">Register</a>
+                <button><a href="/auth/google">Google</a></button><br>
+                <a href="/register">Register</a><br>               
 </div>
 </body>
 
+
+</body>
 </html>
